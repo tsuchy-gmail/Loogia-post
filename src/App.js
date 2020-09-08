@@ -1,24 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import {Name,Depot, Carriers, Spots, Jobs, Purge, Fetch} from "./components/post";
+import Get from "./components/get";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/post">POST</Link>
+          </li>
+          <li>
+            <Link to="/get">GET</Link>
+          </li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path="/post">
+          Loogiaに計算をリクエスト
+          <Purge/>
+          <Name/>
+          <Depot/>
+          <Carriers/>
+          <Spots/>
+          <Jobs/>
+
+          <Fetch/>
+        </Route>
+        <Route path="/get">
+         Loogiaの計算を取得
+          <Get/>
+        </Route>
+        <Route path="/">
+          
+        </Route>
+      </Switch>
     </div>
   );
 }
